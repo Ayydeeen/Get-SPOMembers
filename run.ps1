@@ -4,7 +4,7 @@ Connect-MSOLService
 
 #Add user as admin for all associated sites
 foreach ($i in get-content('C:\links.csv')) { ####CHANGEME####
-Set-SPOUser -Site $i -LoginName admin@domain.com -IsSiteCollectionAdmin $True ####CHANGEME####
+    Set-SPOUser -Site $i -LoginName admin@domain.com -IsSiteCollectionAdmin $True ####CHANGEME####
 }
 
 # Function to remove "_o" suffix from owner login names
@@ -168,5 +168,5 @@ $allUserInfo | Export-Csv -Path "C:\combined_user_info.csv" -NoTypeInformation
 
 #Remove user from Admin for all associated sites in CSV
 foreach ($i in get-content('C:\links.csv')) { ####CHANGEME####
-Set-SPOUser -Site $i -LoginName admin@domain.com -IsSiteCollectionAdmin $False ####CHANGEME####
+    Set-SPOUser -Site $i -LoginName admin@domain.com -IsSiteCollectionAdmin $False ####CHANGEME####
 }
