@@ -49,18 +49,20 @@ foreach ($siteURL in get-content('C:\links1.csv')) { ####CHANGEME####
     $siteGuests = ""
 
     # Get site owners
-    $CALoginName = Get-SPOSite -Identity $siteUrl | Select-Object -ExpandProperty Owner
-
-    $SiteOwners = $CALoginName
+    $SiteOwners = Get-SPOSite -Identity $siteUrl | Select-Object -ExpandProperty Owner
+    Start-Sleep -Milliseconds 100
 
     # Get site admins
     $siteAdmins = Get-SPOUser -Site $siteUrl -Limit All | Where-Object { $_.IsSiteAdmin -eq $true }
+    Start-Sleep -Milliseconds 100
 
     # Get site members (users with contribute permissions or higher)
-    $siteMembers = Get-SPOUser -Site $siteUrl -Limit All | Where-Object { $_.IsSiteAdmin -eq $false } 
+    $siteMembers = Get-SPOUser -Site $siteUrl -Limit All | Where-Object { $_.IsSiteAdmin -eq $false }
+    Start-Sleep -Milliseconds 100
 
     # Get site guests (external users)
     $siteGuests = Get-SPOExternalUser -Site $siteUrl
+    Start-Sleep -Milliseconds 100
 
     #------------------------------------
 
